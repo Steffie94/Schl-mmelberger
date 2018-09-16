@@ -21,10 +21,15 @@ public class Schaden : MonoBehaviour {
         //Schaut ob der Spieler den Trigger berührt
         if(other.gameObject.tag == "Player")
         {
-            //Verletzt den Spieler
-            FindObjectOfType<Leben>().schadenSpieler(schadensWert);
+            //Ermittelt die Rückstoßrichtung
+            Vector3 schadensRichtung = other.transform.position - transform.position;
 
-            FindObjectOfType<SpieleManager>().hurtHealth(schadensWert);
+            //Limitiert die Werte maximal 1 in jeder Richtung
+            schadensRichtung = schadensRichtung.normalized;
+
+            //Verletzt den Spieler
+            FindObjectOfType<Leben>().schadenSpieler(schadensWert, schadensRichtung);
+
         }
     }
 }
