@@ -21,10 +21,8 @@ public class Spikes : MonoBehaviour {
         {
             //Zieht der alten position die neue ab und fügt diese dem neuem Vector hinzu.
             Vector3 altposition = (transform.position - other.transform.position).normalized;
-            //Benutzt die Funktion SchadenSpieler mit neuen Parametern
-            // Erste Parameter reduziert das Leben bei Verletzung
-            //Zweite Parameter wird der Vector hinzugefügt und die Position y * die höhe genommen in der sie hoch geschleudert werden soll.
-            //FindObjectOfType<SpielerSteuerung>().BounceOnComment();
+            //Aufruf der Funktion BounceOnComment damit der Spieler weggeschleudert wird.
+            FindObjectOfType<SpielerSteuerung>().BounceOnComment();
         }
     }
 }
