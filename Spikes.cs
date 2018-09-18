@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,7 +21,7 @@ public class Spikes : MonoBehaviour {
         {
             //Zieht der alten position die neue ab und fügt diese dem neuem Vector hinzu.
             Vector3 altposition = (transform.position - other.transform.position).normalized;
-            //Aufruf der Funktion BounceOnComment damit der Spieler weggeschleudert wird.
+            //Aufruf der Funktion BounceOnComment vom Script SpielerSteuerung, damit der Spieler weggeschleudert wird.
             FindObjectOfType<SpielerSteuerung>().BounceOnComment();
         }
     }
