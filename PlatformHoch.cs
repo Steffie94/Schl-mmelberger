@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlatformHoch : MonoBehaviour {
+
     public Transform bewegendePlatform;
     public Transform positionA;
     public Transform positionB;
     public Vector3 neuePosition;
+
     public string momentanerStatus;
     public float smooth;
     public float zeitZuruecksetzen;
@@ -43,5 +45,25 @@ public class PlatformHoch : MonoBehaviour {
             neuePosition = positionB.position;
         }
         Invoke("Zielverändern", zeitZuruecksetzen);
+    }
+
+
+    //Sorgt dafür das der Player wenn er auf der Platform springt zum Kind von der Platform wird.
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            other.transform.parent =transform;
+
+        }
+    }
+
+    //Wenn der PLayer die Platform wieder verlässt ist kein Kind mehr. 
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            other.transform.parent= null;
+        }
     }
 }
