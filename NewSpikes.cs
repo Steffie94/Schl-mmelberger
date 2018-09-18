@@ -42,7 +42,8 @@ public class NewSpikes : MonoBehaviour {
         {
             //Zieht der alten position die neue ab und fügt diese dem neuem Vector hinzu.
             Vector3 altposition = (transform.position - other.transform.position).normalized;
-            //Benutzt die Funktion SchadenSpieler mit neuen Parametern
+            
+            //Aufruf der Funktion BounceOnComment vom Script SpielerSteuerung, damit der Spieler weggeschleudert wird.
             FindObjectOfType<SpielerSteuerung>().BounceOnComment( );
         }
     }
