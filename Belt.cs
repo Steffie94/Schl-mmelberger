@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class Belt : MonoBehaviour
 {
-    public GameObject belt;
-    public Transform endpoint;
+    public Rigidbody rb;
     //Schnelligkeit des Laufbandes.
-    public float speed = 1f;
+    public float speed = 2f;
 
     //Dafür da dass wenn ein Objekt auf das Laufband ist etwas passiert sonst nichts.
-    void OnTriggerStay(Collider other)
+    void FixedUpdate()
     {
-            other.transform.position = Vector3.MoveTowards(other.transform.position,endpoint.position, speed * Time.deltaTime);
-     
+        rb = GetComponent<Rigidbody>();
+        rb.position -= transform.forward * speed * Time.deltaTime;
+        rb.MovePosition(rb.position + transform.forward *speed*Time.deltaTime);
     }
 }

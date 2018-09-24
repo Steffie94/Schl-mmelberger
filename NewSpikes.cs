@@ -7,7 +7,7 @@ public class NewSpikes : MonoBehaviour {
     //Schnelligkeit der Spikes festlegen.
     public float speed = 5f;
     //Wie hoch die Spikes gehen sollen.
-    public float height = 0.5f;
+    public float height = 0.1f;
     // Nach welchem Zeitabstand die Spikes die Bewegung durch führen.
     private IEnumerator delayTime;
 
@@ -39,12 +39,14 @@ public class NewSpikes : MonoBehaviour {
     void OnTriggerEnter(Collider other)
     {
         if(other.transform.tag == "Player")
-        {
-            //Zieht der alten position die neue ab und fügt diese dem neuem Vector hinzu.
-            Vector3 altposition = (transform.position - other.transform.position).normalized;
-            
-            //Aufruf der Funktion BounceOnComment vom Script SpielerSteuerung, damit der Spieler weggeschleudert wird.
-            FindObjectOfType<SpielerSteuerung>().BounceOnComment( );
+        {            
+            //Nimmt den Vector Null
+            Vector3 altposition = Vector3.zero;
+            //Benutzt die Funktion SchadenSpieler mit neuen Parametern
+            // Erste Parameter reduziert das Leben bei Verletzung
+            //Zweite Parameter wird der Vector hinzugefügt 
+            //und da er Null ist wird er nicht weggeschleudert.
+            FindObjectOfType<Leben>().schadenSpieler(1, altposition);
         }
     }
 }

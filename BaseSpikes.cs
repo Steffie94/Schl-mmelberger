@@ -10,7 +10,7 @@ public class BaseSpikes : MonoBehaviour {
         //Player wird ein Kind von der Base.
         if (other.gameObject.tag == "Player")
         {
-            other.transform.parent = transform;
+            other.transform.parent = gameObject.transform;
         }
     }
 
